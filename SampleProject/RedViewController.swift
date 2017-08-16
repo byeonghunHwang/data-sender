@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RedViewController.swift
 //  SampleProject
 //
 //  Created by ktds 10 on 2017. 8. 16..
@@ -8,26 +8,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class RedViewController: UIViewController {
 
-    @IBOutlet weak var myTextField: UITextField!
+    @IBOutlet weak var myLabel: UILabel!
     
-    @IBAction func next(_ sender: Any) {
-        let textFieldStr = self.myTextField.text
-        print(textFieldStr)
-        
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "secondView")
-        
-        if let secondVC = vc as? SecondViewController {
-            secondVC.myStr = textFieldStr
-            self.present(secondVC, animated: true, completion: nil)
-        }
-    }
+    var myStr:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let str = myStr {
+            myLabel.text = str
+        }
     }
 
     override func didReceiveMemoryWarning() {

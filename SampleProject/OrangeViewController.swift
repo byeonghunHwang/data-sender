@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  OrangeViewController.swift
 //  SampleProject
 //
 //  Created by ktds 10 on 2017. 8. 16..
@@ -8,20 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class OrangeViewController: UIViewController {
 
     @IBOutlet weak var myTextField: UITextField!
     
-    @IBAction func next(_ sender: Any) {
-        let textFieldStr = self.myTextField.text
-        print(textFieldStr)
-        
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "secondView")
-        
-        if let secondVC = vc as? SecondViewController {
-            secondVC.myStr = textFieldStr
-            self.present(secondVC, animated: true, completion: nil)
+    @IBAction func close(_ sender: Any) {
+        if let prevVC = self.presentingViewController as? RedViewController {
+            prevVC.myStr = myTextField.text
         }
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {

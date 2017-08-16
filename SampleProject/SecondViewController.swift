@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SecondViewController.swift
 //  SampleProject
 //
 //  Created by ktds 10 on 2017. 8. 16..
@@ -8,26 +8,23 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    @IBOutlet weak var myTextField: UITextField!
+class SecondViewController: UIViewController {
     
-    @IBAction func next(_ sender: Any) {
-        let textFieldStr = self.myTextField.text
-        print(textFieldStr)
-        
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "secondView")
-        
-        if let secondVC = vc as? SecondViewController {
-            secondVC.myStr = textFieldStr
-            self.present(secondVC, animated: true, completion: nil)
-        }
+    var myStr:String?
+
+    @IBOutlet weak var myLabel: UILabel!
+    
+    @IBAction func close(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if let str = myStr {
+            self.myLabel.text = str
+        }
     }
 
     override func didReceiveMemoryWarning() {
